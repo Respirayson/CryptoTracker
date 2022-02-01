@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Currency Converter
+{% endblock %}
+
+{% block main %}
+    <div class="box">
+        <img src="/static/currency.jpg" alt="money logo" class="avatar">
+        <h1>Currency Converter</h1>
+        <div class="row">
+            <p>Amount to Convert:</p>
+            <input type="number" placeholder="Enter Amount" autofocus id="amountConvert" step="any" value="0">
+        </div>
+        <div class="row">
+            <p>From:</p>
+            <select class="from">
+                <option disabled selected value="">Select Currency</option>
+                {% for currency in currencies %}
+                    <option value="{{ currency }}">{{ currency }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row">
+            <p>To:</p>
+            <select class="to">
+                <option disabled selected value="">Select Currency</option>
+                {% for currency in currencies %}
+                    <option value="{{ currency }}">{{ currency }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="text-center">
+            <button class="m-3 convert" type="submit">Convert</button>
+            <button class="m-3" onclick="clearValue()">Reset</button>
+        </div>
+        <div class="row">
+            <p>Final Amount:</p>
+        </div>
+        <h2 class="finalValue text-center"></h2>
+        <footer class="footerLogo small text-center text-muted">
+            <img src="/static/exchangeratelogo.png" alt="exchange rate logo" width="20px" height="20px">
+            <b class="whiteText"> Powered by <a href="https://www.exchangerate-api.com/">ExchangeRate-API</a></b>
+        </footer>
+    </div>
+    <script src="/static/currency.js"></script>
+    <style>
+        h2 {
+            font-family: sans-serif;
+            padding: 10px;
+            border-radius: 10px;
+            height: 60px;
+        }
+
+        body {
+            background-image: url('/static/backgroundCurrency.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        footer {
+            margin: -20px;
+        }
+    </style>
+{% endblock %}

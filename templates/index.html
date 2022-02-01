@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class='jumbotron jumbotron-fluid transparentBox'>
+        <div class="container">
+            <h1 class="display-5"><b>Live Prices, News and Performance All From One Place:</b></h1>
+            <h3 style="color: #bfbfbf"><b>Register now to get started.</b></h4>
+            <p class="lead">
+                <a class="btn btn-lg btnRound" href="/register" role="button"><b>Create an Account</b></a>
+            </p>
+        </div>
+    </div>
+
+    <style>
+    body
+    {
+        background-image: url('/static/background.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    </style>
+{% endblock %}

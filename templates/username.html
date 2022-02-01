@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Username
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-danger text-center" id="information" style="visibility: hidden">{{ information }}</div>
+
+    <div class="loginBox">
+        <img src="/static/login.png" class="avatar" alt="avatar">
+        <h1>Change Username</h1>
+        <form action="/username" method="POST">
+            <p>Username</p>
+            <input type="text" autofocus autocomplete="off" name="username" placeholder="Enter New Username">
+            <p>Date of Birth</p>
+            <input type="date" name="year">
+            <button class="btn" type="submit">Change Username</button>
+        </form>
+    </div>
+    <script src="/static/buy.js"></script>
+    <style>
+        .alert {
+            position: relative;
+            margin-bottom: 0;
+            top: -60px;
+            height: 42px;
+            width: 100%;
+        }
+
+        body {
+            background-image: url('/static/usernameBackground.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+{% endblock %}

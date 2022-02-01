@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Live Prices
+{% endblock %}
+
+{% block main %}
+    <table class="live-table">
+        <thead>
+            <tr>
+                <th class="rank">#</th>
+                <th class="name">Name</th>
+                <th class="symbol">Symbol</th>
+                <th class="price">Price(USD)</th>
+                <th class="market_cap">Market Cap</th>
+                <th class="circulating_supply">Circulating Supply</th>
+                <th class="volume_24h">Volume(24h)</th>
+                <th class="percentage_change_24h">Price Change(24h)</th>
+            </tr>
+        </thead>
+        <tbody id="cryptocurrencies">
+        </tbody>
+    </table>
+    <footer class="small text-center text-muted">
+        <img src="/static/coingecko.png" alt="coingecko" width="20px" height="20px">
+        <b> Powered by <a href="https://www.coingecko.com/en">CoinGecko</a></b>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/static/live.js"></script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Reset Password
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-danger text-center" id="information" style="visibility: hidden">{{ information }}</div>
+
+    <div class="loginBox">
+        <img src="/static/login.png" class="avatar" alt="avatar">
+        <h1>Reset Password</h1>
+        <form action="/change" method="POST">
+            <p>Username</p>
+            <h5><em>{{ username }}</em></h5>
+            <p>Password</p>
+            <input type="password" autofocus name="password" placeholder="Enter New Password">
+            <input type="password" name="confirmation" placeholder="Confirm New Password">
+            <button class="btn" type="submit">Reset Password</button>
+        </form>
+    </div>
+    <script src="/static/buy.js"></script>
+    <style>
+        .alert {
+            position: relative;
+            margin-bottom: 0;
+            top: -60px;
+            height: 42px;
+            width: 100%;
+        }
+
+        h5 {
+            text-align: left;
+        }
+
+        body {
+            background-image: url('/static/changeBackground.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+    <header>
+        <div class="alert alert-danger text-center" role="alert" id="invalid" style="visibility: hidden;">{{ invalid }}</div>
+    </header>
+    <div class="loginBox">
+        <img src="/static/login.png" class="avatar" alt="login avatar">
+        <h1>Login Here</h1>
+        <form action="/login" method="POST">
+            <p>Username</p>
+            <input type="text" autofocus autocomplete="off" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" autocomplete="off" name="password" placeholder="Enter Password"><br>
+            <button class="btn" type="submit"><b>Login</b></button><br>
+            <a href="/forgot">Lost your password?</a><br>
+            <a href="/register">Don't have an account?</a>
+        </form>
+    </div>
+    <script src="/static/login.js"></script>
+    <style>
+        body {
+            background: url('/static/loginBackground.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .alert {
+            position: relative;
+            margin-bottom: 0;
+            padding: 1rem 1rem;
+            top: -60px;
+            height: 50px;
+            width: 100%;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="live-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Timestamp</th>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Previous Holdings / Price</th>
+                <th>Previous Value</th>
+                <th>New Holdings / Price</th>
+                <th>New Value</th>
+                <th>Transaction Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in history %}
+                <tr>
+                    <td>{{ entry.rank }}</td>
+                    <td class="timestamp">{{ entry.timestamp }}</td>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.symbol }}</td>
+                    <td>{{ entry.oldHoldings }} / ${{ entry.oldPrice }}</td>
+                    <td>{{ entry.oldValue }}</td>
+                    <td>{{ entry.newHoldings }} / ${{ entry.newPrice }}</td>
+                    <td>{{ entry.newValue }}</td>
+                    <td class="type">{{ entry.type }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="/static/history.js"></script>
+{% endblock %}

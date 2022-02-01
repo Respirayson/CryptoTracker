@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+    <div class="informationHeader" id="lastUpdated"></div>
+    <div>
+        {{ test }}
+    </div>
+    <table class="live-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Holdings</th>
+                <th>Price when Bought</th>
+                <th>Current Price</th>
+                <th>Value Deposited</th>
+                <th>Current Value</th>
+                <th>Profit</th>
+                <th>Gains / Losses</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in portfolio %}
+                <tr>
+                    <td><b>{{ entry.rank }}</b></td>
+                    <td><img src="{{ entry.image }}" alt="{{ entry.name }}" width="25px" height="25px"> {{ entry.name }}</td>
+                    <td>{{ entry.symbol }}</td>
+                    <td>{{ entry.holdings }}</td>
+                    <td>${{ entry.oldPrice }}</td>
+                    <td>${{ entry.price }}</td>
+                    <td>${{ entry.value }}</td>
+                    <td>${{ entry.currentValue }}</td>
+                    <td class="profit">{{ entry.profit }}</td>
+                    <td class="percentage">{{ entry.percentage }}</td>
+                    <td>
+                        <form action="/dashboard" method="POST">
+                            <button type="submit" class="btn btn-danger" name="id" value="{{ entry.id }}"><b>Remove</b></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <form action="/add" method="GET">
+                        <button type="submit" class="btn btn-success"><b>Add</b></button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>Total</b></td>
+                <td>${{ value }}</td>
+                <td>${{ currentValue }}</td>
+                <td class="totalProfits">{{ profits }}</td>
+                <td class="totalPercentage">{{ percentageDifference }}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <footer class="small text-center text-muted">
+        <img src="/static/coingecko.png" alt="coingecko" width="20px" height="20px">
+        <b> Powered by <a href="https://www.coingecko.com/en">CoinGecko</a></b>
+    </footer>
+    <script src="/static/dashboard.js"></script>
+    <style>
+        .btn {
+            width: 100%;
+        }
+    </style>
+{% endblock %}

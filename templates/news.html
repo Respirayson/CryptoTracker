@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Trending News
+{% endblock %}
+
+{% block main %}
+    <div class="card-columns">
+        {% for new in news %}
+            <div class="card">
+                <img class="card-img-top" src= "{{ new.imgURL }}" alt="Image">
+                <div class="card-body">
+                    <h5 class="card-title"><b>{{ new.source }}:</b> {{ new.title }}</h5>
+                    <p class="card-text">{{ new.description }}</p>
+                    <p class="card-text"><small class="text-muted"id="update"></small></p>
+                    <a href="{{ new.link }}" class="btn btnRound"><b>Find out more</b></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <footer class="small text-center text-muted">
+        <img src="/static/coinstats.png" alt="coingecko" width="20px" height="20px">
+        <b> Powered by <a href="https://coinstats.app/">CoinStats</a></b>
+    </footer>
+
+    <script src="/static/news.js"></script>
+{% endblock %}

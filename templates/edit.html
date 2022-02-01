@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-danger text-center" id="information" style="visibility: hidden">{{ information }}</div>
+    <div class="loginBox">
+        <h1>EDIT</h1>
+        <form action="/edit" method="POST">
+            <p>Entry</p>
+            <select name="id">
+                <option disabled selected value="">Select Cryptocurrency Entry</option>
+                {% for entry in portfolio %}
+                    <option value="{{ entry.id }}">{{ entry.symbol }}: {{ entry.holdings }} / ${{ entry.price }}</option>
+                {% endfor %}
+            </select>
+            <p>New Holdings</p>
+            <input type="number" min="0" step="any" name="holdings" placeholder="Enter Holdings">
+            <p>New Price</p>
+            <input type="number" min="0" step="any" name="price" placeholder="Enter Price">
+            <button class="btn" type="submit"><b>Edit</b></button>
+        </form>
+    </div>
+    <style>
+        body {
+            background: url('/static/buyBackground.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .loginBox {
+            padding: 30px 30px;
+        }
+
+        .alert {
+            margin: -25px 0 -5px 0;
+            padding: 0.25rem;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            margin-bottom: 20px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        select option {
+            background: rgb(100, 100, 100, 0.8);
+        }
+    </style>
+    <script src="/static/buy.js"></script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+    <div class="alert alert-danger text-center" id="information" style="visibility: hidden">{{ information }}</div>
+    <div class="loginBox">
+        <h1>BUY</h1>
+        <form action="/add" method="POST">
+            <p>Symbol of Cryptocurrency</p>
+            <input type="text" placeholder="Enter Symbol" name="symbol" autocomplete="off" autofocus>
+            <p>Holdings</p>
+            <input type="number" min="0" step="any" name="holdings" placeholder="Enter Holdings">
+            <p>Price Bought</p>
+            <input type="number" min="0" step="any" name="price" placeholder="Enter Price">
+            <button class="btn" type="submit"><b>Add</b></button>
+        </form>
+    </div>
+    <style>
+        body {
+            background: url('/static/buyBackground.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .loginBox {
+            padding: 30px 30px;
+        }
+
+        .alert {
+            margin: -25px 0 -5px 0;
+            padding: 0.25rem;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="/static/buy.js"></script>
+{% endblock %}
